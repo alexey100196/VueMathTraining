@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <h1>Math treining. Level {{level + 1}}</h1> -->
-    <hr>
+    <ProgresBar :progres="progres"></ProgresBar>
     <div class="container-content">
       <h2>Are you ready?</h2>
       <button class="btn btn-starter" @click="$emit('visibleQuestion')">start</button>

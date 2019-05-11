@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- <h1>Math treining. Level {{level + 1}}</h1> -->
-    <hr>
     <div class="container-content">
       <button class="btn btn-countine" @click="$emit('visiblAppQuestion')">countine</button>
     </div>

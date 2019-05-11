@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- <h1>Masth training. Level {{level + 1}}</h1> -->
-    <hr>
     <div class="container-content">
       <span>Success {{count + 1}}</span>
       <span>error {{error + 1}}</span>

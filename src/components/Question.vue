@@ -1,10 +1,7 @@
-<template v-on:nextQuest='nextQuestion'>
+<template>
   <div>
-    <h1>Math training. Level</h1>
-    <hr>
     <div class="container-content">
       <span>{{x}} + {{y}} = ?</span>
-
       <div class="answer">
         <button
           class="btn"
@@ -18,13 +15,12 @@
 </template>
 
 <script>
-import AppResult from "./Result.vue";
-
 export default {
   data() {
     return {
       x: this.randomNumber(),
-      y: this.randomNumber()
+      y: this.randomNumber(),
+      // progres: 30
     };
   },
   methods: {
@@ -38,8 +34,6 @@ export default {
         this.$emit("error");
       }
     },
-
-    nextQuestion() {}
   },
   computed: {
     numbers() {
@@ -57,9 +51,6 @@ export default {
       return result.sort((a, b) => Math.random() - 0.5);
     }
   },
-  components: {
-    AppResult
-  }
 };
 </script>
 <style scoped>

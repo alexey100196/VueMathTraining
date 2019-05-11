@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!-- <h1>Masth training. Level {{level + 1}}</h1> -->
     <h1>Message</h1>
     <hr>
+    <ProgresBar :progres="progres"></ProgresBar>
     <div class="container-content">
       <span>{{text}}</span>
       <span>{{type}}</span>
@@ -15,6 +15,7 @@
 
 <script>
 export default {
+  
   props: ["type", "text"],
   data() {
     return {};

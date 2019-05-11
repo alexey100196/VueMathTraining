@@ -1,20 +1,25 @@
 <template>
   <div class="container">
+    <h1>Math training. Level</h1>
+    <hr>
+    <ProgresBar :progres="progres"></ProgresBar>
     <starting v-if="visible === 'Starting'" v-on:visibleQuestion="visible = 'Question'"></starting>
-    <question v-else-if="visible === 'Question'"
+    <question
+      v-else-if="visible === 'Question'"
       v-on:success="successQuest"
       v-on:error="errorQuest"
+      :progres="progres"
     ></question>
     <Result v-else-if="visible === 'Result'"></Result>
     <wright-answer v-else-if="visible === 'RightAnswer'"></wright-answer>
-    <message v-else-if="visible === 'Message'"
-     :type="message.type" 
-     :text="message.text"
-     :success="status.success"
-     :error="status.error"
-
-     v-on:nextQuest="visible = 'Question'"
-     ></message>
+    <message
+      v-else-if="visible === 'Message'"
+      :type="message.type"
+      :text="message.text"
+      :success="status.success"
+      :error="status.error"
+      v-on:nextQuest="visible = 'Question'"
+    ></message>
   </div>
 </template>
 
@@ -37,17 +42,20 @@ export default {
       status: {
         success: 0,
         error: 0
-      }
+      },
+      progres: 0
     };
   },
   methods: {
     successQuest() {
       this.visible = "Message";
-      this.message.text = "Success: " + (this.status.success  += 1);
+      this.message.text = "Success: " + (this.status.success += 1);
+      this.progres += 33.333;
     },
     errorQuest() {
       this.visible = "Message";
       this.message.text = "Error: " + (this.status.error += 1);
+      this.progres += 33.333;
     }
   },
   components: {
