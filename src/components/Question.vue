@@ -14,8 +14,6 @@
         >{{item}}</button>
       </div>
     </div>
-    <!-- v-for="randAnswer in randAnswers" -->
-    <!-- <app-Result></app-Result> -->
   </div>
 </template>
 

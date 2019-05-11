@@ -15,9 +15,6 @@
 
      v-on:nextQuest="visible = 'Question'"
      ></message>
-    <!-- <-wright-answer></-wright-answer> -->
-    <!-- <-Result></-Result> -->
-    <!-- <ProgresBar></ProgresBar> -->
   </div>
 </template>
 
@@ -46,14 +43,11 @@ export default {
   methods: {
     successQuest() {
       this.visible = "Message";
-      this.message.text = "Good " + this.status.success;
-
-      this.status.success += 1
+      this.message.text = "Success: " + (this.status.success  += 1);
     },
     errorQuest() {
       this.visible = "Message";
-      this.message.text = "Not Good " + this.status.error;
-      this.status.error += 1
+      this.message.text = "Error: " + (this.status.error += 1);
     }
   },
   components: {
