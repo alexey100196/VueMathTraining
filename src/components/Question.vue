@@ -1,4 +1,4 @@
-<template >
+<template v-on:nextQuest='nextQuestion'>
   <div>
     <h1>Math training. Level</h1>
     <hr>
@@ -6,7 +6,9 @@
       <span>{{x}} + {{y}} = ?</span>
 
       <div class="answer">
-        <button class="btn" v-for="(item, i) in numbers" :key="i">{{item}}</button>
+        <button class="btn" v-for="(item, i) in numbers" :key="i" @click="clickAnswer(item)"
+        
+        >{{item}}</button>
         <button class="btn">false</button>
       </div>
     </div>
@@ -28,6 +30,18 @@ export default {
   methods: {
     randomNumber(min, max) {
       return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    },
+    clickAnswer(num) {
+      if(num === this.x + this.y) {
+        this.$emit('success')
+      }
+      else {
+        this.$emit('error')
+      }
+    },
+
+    nextQuestion() {
+
     }
   },
   computed: {
