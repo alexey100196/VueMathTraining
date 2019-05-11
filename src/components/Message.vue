@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1>Message</h1>
-    <hr>
     <ProgresBar :progres="progres"></ProgresBar>
     <div class="container-content">
       <span>{{text}}</span>

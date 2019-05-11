@@ -3,23 +3,25 @@
     <h1>Math training. Level</h1>
     <hr>
     <ProgresBar :progres="progres"></ProgresBar>
-    <starting v-if="visible === 'Starting'" v-on:visibleQuestion="visible = 'Question'"></starting>
-    <question
-      v-else-if="visible === 'Question'"
-      v-on:success="successQuest"
-      v-on:error="errorQuest"
-      :progres="progres"
-    ></question>
-    <Result v-else-if="visible === 'Result'"></Result>
-    <wright-answer v-else-if="visible === 'RightAnswer'"></wright-answer>
-    <message
-      v-else-if="visible === 'Message'"
-      :type="message.type"
-      :text="message.text"
-      :success="status.success"
-      :error="status.error"
-      v-on:nextQuest="visible = 'Question'"
-    ></message>
+    <transition name="switch" mode="out-in">
+      <starting v-if="visible === 'Starting'" v-on:visibleQuestion="visible = 'Question'"></starting>
+      <question
+        v-else-if="visible === 'Question'"
+        v-on:success="successQuest"
+        v-on:error="errorQuest"
+        :progres="progres"
+      ></question>
+      <Result v-else-if="visible === 'Result'"></Result>
+      <wright-answer v-else-if="visible === 'RightAnswer'"></wright-answer>
+      <message
+        v-else-if="visible === 'Message'"
+        :type="message.type"
+        :text="message.text"
+        :success="status.success"
+        :error="status.error"
+        v-on:nextQuest="visible = 'Question'"
+      ></message>
+    </transition>
   </div>
 </template>
 
@@ -95,5 +97,17 @@ export default {
 }
 .error-bg {
   background-color: #cc3c3c;
+}
+
+
+
+/* Animation */
+.switch-enter-active,
+.switch-leave-active {
+  transition: all 0.3s;
+}
+.switch-enter,
+.switch-leave-to {
+  opacity: 0;
 }
 </style>
