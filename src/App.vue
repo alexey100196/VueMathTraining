@@ -11,8 +11,11 @@
         v-on:error="errorQuest"
         :progres="progres"
       ></question>
-      <Result v-else-if="visible === 'Result'"
-      :status="status"
+      <Result
+        v-else-if="visible === 'Result'"
+        :status="status"
+        v-on:nextLevel="nextLevel"
+        v-on:repeatLevel="repeatLevel"
       ></Result>
       <wright-answer v-else-if="visible === 'RightAnswer'"></wright-answer>
       <message
@@ -53,9 +56,9 @@ export default {
     };
   },
   computed: {
-    questionDone() {
-      this.status.success + this.status.error;
-    }
+    // questionDone() {
+    //   this.status.success + this.status.error;
+    // }
   },
   methods: {
     successQuest() {
@@ -79,6 +82,13 @@ export default {
       } else {
         this.visible = "Question";
       }
+    },
+    nextLevel() {
+      this.visible = "Question";
+    },
+    repeatLevel() {
+      this.visible = "Question";
+      this.level = 1;
     }
   },
   components: {

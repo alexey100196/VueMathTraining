@@ -4,8 +4,8 @@
       <span>Success {{status.success}}</span>
       <span>error {{status.error}}</span>
       <div class="answer">
-        <button class="btn">Repeat</button>
-        <button class="btn">Next level</button>
+        <button class="btn" @click="$emit('repeatLevel')">Repeat</button>
+        <button class="btn" @click="$emit('nextLevel')">Next level</button>
         <button class="btn">Stats</button>
 
       </div>
