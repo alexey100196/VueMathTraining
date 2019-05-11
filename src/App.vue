@@ -30,9 +30,6 @@ export default {
     Result,
     WrightAnswer,
     ProgresBar,
-
-
-
   }
 };
 </script>
