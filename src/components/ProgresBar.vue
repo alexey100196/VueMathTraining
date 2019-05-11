@@ -3,7 +3,7 @@
     <div class="tracks_list">
       <div class="track func_progress" data-final="70">
         <div class="progress_bar">
-          <i v-bind:style="{'width': progres + '%' }"></i>
+          <i v-bind:style="{'width': progresBar + '%' }"></i>
         </div>
         <span>
         </span>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  props: ["progres"],
+  props: ["progresBar"],
   data() {
     return {};
   }

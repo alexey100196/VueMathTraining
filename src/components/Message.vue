@@ -1,6 +1,5 @@
 <template>
   <div>
-    <ProgresBar :progres="progres"></ProgresBar>
     <div class="container-content">
       <span>{{text}}</span>
       <span>{{type}}</span>
@@ -13,7 +12,6 @@
 
 <script>
 export default {
-  
   props: ["type", "text"],
   data() {
     return {};

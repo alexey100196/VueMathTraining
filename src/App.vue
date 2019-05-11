@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h1>Math training. Level</h1>
+    <h1>Math training. Level {{level}}</h1>
     <hr>
-    <ProgresBar :progres="progres"></ProgresBar>
+    <ProgresBar :progresBar="progresBar"></ProgresBar>
     <transition name="switch" mode="out-in">
       <starting v-if="visible === 'Starting'" v-on:visibleQuestion="visible = 'Question'"></starting>
       <question
@@ -11,7 +11,9 @@
         v-on:error="errorQuest"
         :progres="progres"
       ></question>
-      <Result v-else-if="visible === 'Result'"></Result>
+      <Result v-else-if="visible === 'Result'"
+      :status="status"
+      ></Result>
       <wright-answer v-else-if="visible === 'RightAnswer'"></wright-answer>
       <message
         v-else-if="visible === 'Message'"
@@ -19,7 +21,7 @@
         :text="message.text"
         :success="status.success"
         :error="status.error"
-        v-on:nextQuest="visible = 'Question'"
+        v-on:nextQuest="nextQuestion"
       ></message>
     </transition>
   </div>
@@ -45,19 +47,38 @@ export default {
         success: 0,
         error: 0
       },
+      level: 1,
+      progresBar: 0,
       progres: 0
     };
+  },
+  computed: {
+    questionDone() {
+      this.status.success + this.status.error;
+    }
   },
   methods: {
     successQuest() {
       this.visible = "Message";
       this.message.text = "Success: " + (this.status.success += 1);
-      this.progres += 33.333;
+      this.progresBar += 33.333;
+      this.progres += 1;
     },
     errorQuest() {
       this.visible = "Message";
       this.message.text = "Error: " + (this.status.error += 1);
-      this.progres += 33.333;
+      this.progresBar += 33.333;
+      this.progres += 1;
+    },
+    nextQuestion() {
+      if (this.progres >= 3) {
+        this.level += 1;
+        this.progres = 0;
+        this.progresBar = 0;
+        this.visible = "Result";
+      } else {
+        this.visible = "Question";
+      }
     }
   },
   components: {
@@ -99,15 +120,13 @@ export default {
   background-color: #cc3c3c;
 }
 
-
-
 /* Animation */
 .switch-enter-active,
 .switch-leave-active {
-  transition: all 0.3s;
+  transition: all 0s;
 }
 .switch-enter,
 .switch-leave-to {
-  opacity: 0;
+  transform: rotateY(-90deg);
 }
 </style>

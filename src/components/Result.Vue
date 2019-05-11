@@ -1,11 +1,13 @@
 <template>
   <div>
     <div class="container-content">
-      <span>Success {{count + 1}}</span>
-      <span>error {{error + 1}}</span>
+      <span>Success {{status.success}}</span>
+      <span>error {{status.error}}</span>
       <div class="answer">
         <button class="btn">Repeat</button>
         <button class="btn">Next level</button>
+        <button class="btn">Stats</button>
+
       </div>
     </div>
   </div>
@@ -13,6 +15,8 @@
 
 <script>
 export default {
+  props: ["status"],
+
   data() {
     return {
       count: 0,

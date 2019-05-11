@@ -1,6 +1,5 @@
 <template>
   <div>
-    <ProgresBar :progres="progres"></ProgresBar>
     <div class="container-content">
       <h2>Are you ready?</h2>
       <button class="btn btn-starter" @click="$emit('visibleQuestion')">start</button>
@@ -10,6 +9,7 @@
 
 <script>
 export default {
+  props: ['progres'],
   data() {
     return {};
   },
