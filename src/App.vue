@@ -29,7 +29,7 @@ export default {
     Question,
     Result,
     WrightAnswer,
-    ProgresBar
+    ProgresBar,
   }
 };
 </script>
