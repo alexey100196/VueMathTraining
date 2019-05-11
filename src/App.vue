@@ -6,10 +6,13 @@
       v-on:error="errorQuest"
     ></question>
     <Result v-else-if="visible === 'Result'"></Result>
-    <wright-answer v-else-if="visible === 'WrightAnswer'"></wright-answer>
+    <wright-answer v-else-if="visible === 'RightAnswer'"></wright-answer>
     <message v-else-if="visible === 'Message'"
      :type="message.type" 
      :text="message.text"
+     :success="status.success"
+     :error="status.error"
+
      v-on:nextQuest="visible = 'Question'"
      ></message>
     <!-- <-wright-answer></-wright-answer> -->
@@ -22,7 +25,7 @@
 import Starting from "./components/Starting.vue";
 import Question from "./components/Question.vue";
 import Result from "./components/Result.vue";
-import WrightAnswer from "./components/WrightAnswer.vue";
+import RightAnswer from "./components/RightAnswer.vue";
 import Message from "./components/Message.vue";
 import ProgresBar from "./components/ProgresBar.vue";
 
@@ -33,26 +36,31 @@ export default {
       message: {
         type: "",
         text: ""
+      },
+      status: {
+        success: 0,
+        error: 0
       }
     };
   },
   methods: {
     successQuest() {
       this.visible = "Message";
-      this.message.text = "Good";
-      this.message.type = "success-bg";
+      this.message.text = "Good " + this.status.success;
+
+      this.status.success += 1
     },
     errorQuest() {
       this.visible = "Message";
-      this.message.text = "Not Good";
-      this.message.type = "error-bg";
+      this.message.text = "Not Good " + this.status.error;
+      this.status.error += 1
     }
   },
   components: {
     Starting,
     Question,
     Result,
-    WrightAnswer,
+    RightAnswer,
     Message,
     ProgresBar
   }

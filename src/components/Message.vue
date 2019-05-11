@@ -15,11 +15,9 @@
 
 <script>
 export default {
-  props: ['type', 'text'],
+  props: ["type", "text"],
   data() {
-    return {
-   
-    };
+    return {};
   }
 };
 </script>
@@ -32,10 +30,8 @@ span {
 }
 .answer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 50%;
-  margin: 0 auto;
 }
 </style>
 

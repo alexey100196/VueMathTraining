@@ -6,10 +6,12 @@
       <span>{{x}} + {{y}} = ?</span>
 
       <div class="answer">
-        <button class="btn" v-for="(item, i) in numbers" :key="i" @click="clickAnswer(item)"
-        
+        <button
+          class="btn"
+          v-for="(item, i) in numbers"
+          :key="i"
+          @click="clickAnswer(item)"
         >{{item}}</button>
-        <button class="btn">false</button>
       </div>
     </div>
     <!-- v-for="randAnswer in randAnswers" -->
@@ -32,17 +34,14 @@ export default {
       return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
     },
     clickAnswer(num) {
-      if(num === this.x + this.y) {
-        this.$emit('success')
-      }
-      else {
-        this.$emit('error')
+      if (num === this.x + this.y) {
+        this.$emit("success");
+      } else {
+        this.$emit("error");
       }
     },
 
-    nextQuestion() {
-
-    }
+    nextQuestion() {}
   },
   computed: {
     numbers() {
