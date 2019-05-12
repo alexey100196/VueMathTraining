@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     randomNumber(min, max) {
-      return Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+      return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
     },
     clickAnswer(num) {
       if (num === this.x + this.y) {

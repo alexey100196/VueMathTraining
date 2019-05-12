@@ -55,27 +55,28 @@ export default {
       progres: 0
     };
   },
-  computed: {
-    // questionDone() {
-    //   this.status.success + this.status.error;
-    // }
-  },
+  computed: {},
   methods: {
     successQuest() {
       this.visible = "Message";
       this.message.text = "Success: " + (this.status.success += 1);
-      this.progresBar += 33.333;
+      this.progresBar += 34;
+      if (this.progresBar >= 100) {
+        this.progresBar = 100;
+      }
       this.progres += 1;
     },
     errorQuest() {
       this.visible = "Message";
       this.message.text = "Error: " + (this.status.error += 1);
-      this.progresBar += 33.333;
+      this.progresBar -= 20;
+      if (this.progresBar <= 0) {
+        this.progresBar = 0;
+      }
       this.progres += 1;
     },
     nextQuestion() {
-      if (this.progres >= 3) {
-        this.level += 1;
+      if (this.progresBar == 100) {
         this.progres = 0;
         this.progresBar = 0;
         this.visible = "Result";
@@ -85,10 +86,13 @@ export default {
     },
     nextLevel() {
       this.visible = "Question";
+      this.level += 1;
     },
     repeatLevel() {
       this.visible = "Question";
       this.level = 1;
+      this.status.success = 0;
+      this.status.error = 0;
     }
   },
   components: {
